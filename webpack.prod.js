@@ -4,7 +4,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const MinifyPlugin = require('babel-minify-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const path = require('path'); 
+const path = require('path');
 
 module.exports = {
 
@@ -20,9 +20,9 @@ module.exports = {
 
     module: {
         rules: [
-            { 
-                test: /\.js$/, 
-                exclude: /node_modules/, 
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
                 use: [
                     'babel-loader'
                 ]
@@ -65,6 +65,7 @@ module.exports = {
             }
         ]
     },
+
     plugins: [
         new HtmlWebPackPlugin({
             template: './src/index.html',
@@ -76,12 +77,7 @@ module.exports = {
         }),
         new MinifyPlugin(),
 
-        new CopyPlugin({
-            patterns: [{ from: 'src/assets', to: 'assets/' },],
-        }),  
-
         new CleanWebpackPlugin(),
     ]
 
 }
-

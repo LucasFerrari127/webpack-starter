@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require('path');
 
 
 module.exports = {
@@ -11,6 +12,7 @@ module.exports = {
     optimization: {
         minimizer: [ new OptimizeCssAssetsPlugin() ]
     },
+    entry: path.resolve(__dirname, 'src') + "/js/index.js",
     module: {
 
 
@@ -27,8 +29,8 @@ module.exports = {
             {
                 test: /styles\.css$/,
                 use: [
-                    MiniCssExtractPlugin.loader,  
-                    'css-loader',                  
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
                 ]
             },
 
@@ -46,7 +48,7 @@ module.exports = {
                     minimize: false,
                 }
 
-                
+
             },
 
             {
@@ -62,8 +64,6 @@ module.exports = {
 
     },
 
-
-
     plugins: [
         new HtmlWebPackPlugin({
             template: './src/index.html',
@@ -74,10 +74,7 @@ module.exports = {
             filename: '[name].css',
             ignoreOrder: false,
         }),
-        new CopyPlugin({
-            patterns: [{ from: 'src/assets', to: 'assets/' },],
-        }),  
-        
+
         new CleanWebpackPlugin(),
     ]
 
@@ -88,4 +85,3 @@ module.exports = {
 
 
 }
-

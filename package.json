@@ -34,6 +34,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "@webpack-cli/init": "^1.1.2"
+    "@webpack-cli/init": "^1.1.2",
+    "path": "^0.12.7"
   }
 }
